@@ -8,12 +8,11 @@
     <link rel="shortcut icon" href="IMG/Logo.jpg" type="image/x-icon">
 </head>
 <body>
-   
 <header>
     <img class="logo-circular" src="IMG/logo3.png" alt="Buggati" title="Buggati">
     <h1>Pensamiento Vivo</h1>
     <button id="modoOscuroBtn">🌙 Modo Oscuro</button>
-    <button id="cambiarIdiomaBtn">🇬🇧 Inglés</button> <!-- Botón para cambiar idioma -->
+    <button id="cambiarIdiomaBtn">🇬🇧 Inglés</button>
 
     <nav>  
         <ul>
@@ -45,18 +44,15 @@
     </nav>
 </header>
 
-<section>
-    <h2>INTRODUCCIÓN</h2>  
-    <p>La filosofía y el inglés son dos herramientas que nos permiten comprender mejor el mundo en el que vivimos. 
-        La primera nos enseña a pensar críticamente, a cuestionar lo establecido y a buscar respuestas profundas sobre la verdad, 
-        la justicia, la felicidad y la sociedad. El inglés, por su parte, abre las puertas a un diálogo global, permitiéndonos acceder a nuevas ideas y participar en conversaciones universales sobre temas como los derechos humanos, la paz, el gobierno y los movimientos sociales.</p>
-    <p>Más que una recopilación de información, este trabajo busca invitar a la reflexión y al diálogo, para que podamos reconocer la importancia de pensar críticamente y de comunicarnos en un mundo cada vez más conectado.</p>
-    <center><img width="880" height="480" src="IMG/Inicio.webp" alt="Filosofia" title="Filosofia"></center> 
-</section>
-
-<section>
-    <h2>INTRODUCTION</h2>  
-    <p>In this magazine, we will explore great philosophers whose ideas remain relevant today, and we will see how their reflections can help us face the challenges of the present. At the same time, in the English section, we will address essential concepts related to justice, freedom, and coexistence, showing that the concerns of classical thinkers are still relevant in contemporary debates.</p>
+<section id="Beccaria">
+  <h2>Cesare Beccaria (1738-1794)</h2>
+  <div class="content">
+    <p>
+      Beccaria was an Italian philosopher and jurist who revolutionized the way of thinking about crime and criminal justice. He advocated for the prevention of crime through rational and fair means, rejecting torture and cruel punishments. His ideas influenced 
+      the modernization of judicial systems and today are the foundation of human rights and an ethical approach to law enforcement.
+    </p>
+    <img src="IMG/Beccaria.jpg" alt="Cesare" title="Cesare">
+  </div>
 </section>
 
 <footer>
@@ -64,18 +60,11 @@
 </footer>
 
 <script>
-const btnModoOscuro = document.getElementById('modoOscuroBtn');
-const btnIdioma = document.getElementById('cambiarIdiomaBtn');
-const navItems = document.querySelectorAll('.nav-item');
-const menuFilosofia = document.getElementById('menuFilosofia');
-const dropdownFilosofia = document.getElementById('dropdownFilosofia');
-const titulo = document.querySelector('header h1');
-
 // ===== Modo oscuro =====
+const btnModoOscuro = document.getElementById('modoOscuroBtn');
 if (localStorage.getItem('modoOscuro') === 'activado') {
     document.body.classList.add('modo-oscuro');
 }
-
 btnModoOscuro.addEventListener('click', () => {
     document.body.classList.toggle('modo-oscuro');
     if (document.body.classList.contains('modo-oscuro')) {
@@ -89,41 +78,54 @@ btnModoOscuro.addEventListener('click', () => {
 btnModoOscuro.textContent = document.body.classList.contains('modo-oscuro') ? '☀️' : '🌙';
 
 // ===== Cambio de idioma =====
+const btnIdioma = document.getElementById('cambiarIdiomaBtn');
+const navItems = document.querySelectorAll('.nav-item');
+const menuFilosofia = document.getElementById('menuFilosofia');
+const dropdownFilosofia = document.getElementById('dropdownFilosofia');
+const menuEnglish = document.getElementById('menuEnglish');
+const dropdownEnglish = document.getElementById('dropdownEnglish');
+const titulo = document.querySelector('header h1');
+
 let idiomaEspañol = true;
+
 btnIdioma.addEventListener('click', () => {
     if (idiomaEspañol) {
-        // Menú principal
+        // Menú principal en inglés
         navItems[0].textContent = 'Home';
         navItems[1].textContent = 'Reports';
         navItems[2].textContent = 'News';
         navItems[3].textContent = 'Interviews';
         navItems[4].textContent = 'Reviews';
         navItems[5].textContent = 'Opinions';
-        // Menú Filosofía
+        // Dropdown Filosofía
         menuFilosofia.textContent = 'Philosophy';
         dropdownFilosofia.children[0].textContent = 'Karl Marx';
         dropdownFilosofia.children[1].textContent = 'Socrates';
         dropdownFilosofia.children[2].textContent = 'Immanuel Kant';
         dropdownFilosofia.children[3].textContent = 'Friedrich Nietzsche';
+        // Dropdown English (ya está en inglés)
+        menuEnglish.textContent = 'English';
         // Título
         titulo.textContent = 'Living Thought';
         // Botón
         btnIdioma.textContent = '🇪🇸 Español';
         idiomaEspañol = false;
     } else {
-        // Menú principal
+        // Menú principal en español
         navItems[0].textContent = 'Inicio';
         navItems[1].textContent = 'Reportajes';
         navItems[2].textContent = 'Noticias';
         navItems[3].textContent = 'Entrevistas';
         navItems[4].textContent = 'Reseñas';
         navItems[5].textContent = 'Opiniones';
-        // Menú Filosofía
+        // Dropdown Filosofía
         menuFilosofia.textContent = 'Filosofía';
         dropdownFilosofia.children[0].textContent = 'Karl Marx';
         dropdownFilosofia.children[1].textContent = 'Sócrates';
         dropdownFilosofia.children[2].textContent = 'Immanuel Kant';
         dropdownFilosofia.children[3].textContent = 'Friedrich Nietzsche';
+        // Dropdown English
+        menuEnglish.textContent = 'English';
         // Título
         titulo.textContent = 'Pensamiento Vivo';
         // Botón
@@ -132,7 +134,5 @@ btnIdioma.addEventListener('click', () => {
     }
 });
 </script>
-
 </body>
 </html>
-
